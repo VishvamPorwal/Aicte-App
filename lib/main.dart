@@ -99,20 +99,24 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ElevatedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => MoreInformationClassificationWebViewPage(
-                "https://facilities.aicte-india.org/dashboard/pages/dashboardaicte.php",
-                "AICTE",
-              )));
-              
-            }, child: Text("More Information Classification"))
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              MoreInformationClassificationWebViewPage(
+                                "https://facilities.aicte-india.org/dashboard/pages/dashboardaicte.php",
+                                "AICTE",
+                              )));
+                },
+                child: Text("More Information Classification"))
           ],
         ),
       ),
     );
   }
 }
-
 
 class MoreInformationClassificationWebViewPage extends StatefulWidget {
   final String url;
@@ -135,13 +139,13 @@ class MoreInformationClassificationWebViewPageState
 
   late WebViewController _webViewController;
 
-
   @override
   void initState() {
     super.initState();
     // Enable hybrid composition.
     if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
   }
+
   JavascriptChannel _toasterJavascriptChannel(BuildContext context) {
     return JavascriptChannel(
         name: 'Toaster',
@@ -162,22 +166,22 @@ class MoreInformationClassificationWebViewPageState
         body: Column(children: [
           Expanded(
               child: WebView(
-                  initialUrl: this.url,
-                  javascriptMode: JavascriptMode.unrestricted,
-                  javascriptChannels: <JavascriptChannel>{
+            initialUrl: this.url,
+            javascriptMode: JavascriptMode.unrestricted,
+            javascriptChannels: <JavascriptChannel>{
               _toasterJavascriptChannel(context),
             },
             onWebViewCreated: (WebViewController webViewController) {
               _webViewController = webViewController;
               _controller.complete(webViewController);
             },
-                  onPageFinished: (String url) {
+            onPageFinished: (String url) {
               print('Page finished loading: $url');
 
               // Removes header and footer from page
               _webViewController
                   .runJavascriptReturningResult("javascript:(function() { " +
-                      "var head = document.querySelector('body > div.w3-top')" +
+                      "var head = document.querySelector('body > div.w3-top');" +
                       "head.parentNode.removeChild(head);" +
                       "var footer = document.getElementsByTagName('footer')[0];" +
                       "footer.parentNode.removeChild(footer);" +
