@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:aicte_app/utils/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -48,7 +49,9 @@ class WebViewRendererUtilState
     return Scaffold(
         appBar: AppBar(
           title: Text(this.title),
+          automaticallyImplyLeading: false,
         ),
+        drawer: MyDrawer(),
         body: Column(children: [
           Expanded(
               child: WebView(

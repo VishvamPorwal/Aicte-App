@@ -1,3 +1,5 @@
+import 'package:aicte_app/pages/bulletins.dart';
+import 'package:aicte_app/pages/gallery.dart';
 import 'package:aicte_app/pages/statistics.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +39,7 @@ class _HomePageState extends State<HomePage> {
               ),
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) => StatisticsPage()));
-              }, // TODO: Add Statistics Page
+              }, 
             ),
             InkWell(
                 child: Card(
@@ -52,7 +54,10 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                onTap: () {}, // TODO: Add Statistics Page
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => StatisticsPage()));
+                
+                },
               ),
             InkWell(
                 child: Card(
@@ -67,7 +72,11 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                onTap: () {}, // TODO: Add Statistics Page
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => BulletinsPage()));
+                
+                
+                }, 
               ),
             InkWell(
                 child: Card(
@@ -82,7 +91,11 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                onTap: () {}, // TODO: Add Statistics Page
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => GalleryPage()));
+                
+                
+                }, // TODO: Add Statistics Page
               ),
           ],))
         ],
