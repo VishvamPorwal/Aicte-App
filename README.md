@@ -1,6 +1,6 @@
 # aicte_app
 
-A new Flutter project.
+A new Flutter project for AICTE APP.
 
 ## Getting Started
 
