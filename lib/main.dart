@@ -101,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             ElevatedButton(onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder: (context) => MoreInformationClassificationWebViewPage(
-                "https://www.aicte-india.org/",
+                "https://facilities.aicte-india.org/dashboard/pages/dashboardaicte.php",
                 "AICTE",
               )));
               
