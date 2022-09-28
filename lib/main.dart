@@ -131,6 +131,9 @@ class MoreInformationClassificationWebViewPageState
 
   MoreInformationClassificationWebViewPageState(this.url, this.title);
 
+  late WebViewController _webViewController;
+
+
   @override
   void initState() {
     super.initState();
@@ -148,7 +151,18 @@ class MoreInformationClassificationWebViewPageState
           Expanded(
               child: WebView(
                   initialUrl: this.url,
-                  javascriptMode: JavascriptMode.unrestricted))
+                  javascriptMode: JavascriptMode.unrestricted,
+                  onPageFinished: (String url) {
+              print('Page finished loading: $url');
+
+              // Removes header and footer from page
+              _webViewController
+                  .runJavascriptReturningResult("javascript:(function() { var head = document.getElementsByTagName('header')[0];head.parentNode.removeChild(head);var footer = document.getElementsByTagName('footer')[0];footer.parentNode.removeChild(footer);})()")
+                  .then(
+                      (value) => debugPrint('Page finished loading Javascript'))
+                  .catchError((onError) => debugPrint('$onError'));
+            },
+          ))
         ]));
   }
 }
