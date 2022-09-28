@@ -177,7 +177,7 @@ class MoreInformationClassificationWebViewPageState
               // Removes header and footer from page
               _webViewController
                   .runJavascriptReturningResult("javascript:(function() { " +
-                      "var head = document.getElementsByTagName('header')[0];" +
+                      "var head = document.querySelector('body > div.w3-top')" +
                       "head.parentNode.removeChild(head);" +
                       "var footer = document.getElementsByTagName('footer')[0];" +
                       "footer.parentNode.removeChild(footer);" +
