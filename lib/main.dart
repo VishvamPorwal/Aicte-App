@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -95,21 +98,57 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            ElevatedButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => MoreInformationClassificationWebViewPage(
+                "https://www.aicte-india.org/",
+                "AICTE",
+              )));
+              
+            }, child: Text("More Information Classification"))
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+}
+
+
+class MoreInformationClassificationWebViewPage extends StatefulWidget {
+  final String url;
+  final String title;
+
+  MoreInformationClassificationWebViewPage(this.url, this.title);
+
+  @override
+  MoreInformationClassificationWebViewPageState createState() =>
+      MoreInformationClassificationWebViewPageState(this.url, this.title);
+}
+
+class MoreInformationClassificationWebViewPageState
+    extends State<MoreInformationClassificationWebViewPage> {
+  final String url;
+  final String title;
+
+  MoreInformationClassificationWebViewPageState(this.url, this.title);
+
+  @override
+  void initState() {
+    super.initState();
+    // Enable hybrid composition.
+    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(this.title),
+        ),
+        body: Column(children: [
+          Expanded(
+              child: WebView(
+                  initialUrl: this.url,
+                  javascriptMode: JavascriptMode.unrestricted))
+        ]));
   }
 }
