@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -128,7 +129,8 @@ class MoreInformationClassificationWebViewPageState
     extends State<MoreInformationClassificationWebViewPage> {
   final String url;
   final String title;
-
+  final Completer<WebViewController> _controller =
+      Completer<WebViewController>();
   MoreInformationClassificationWebViewPageState(this.url, this.title);
 
   late WebViewController _webViewController;
@@ -139,6 +141,16 @@ class MoreInformationClassificationWebViewPageState
     super.initState();
     // Enable hybrid composition.
     if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
+  }
+  JavascriptChannel _toasterJavascriptChannel(BuildContext context) {
+    return JavascriptChannel(
+        name: 'Toaster',
+        onMessageReceived: (JavascriptMessage message) {
+          // ignore: deprecated_member_use
+          Scaffold.of(context).showSnackBar(
+            SnackBar(content: Text(message.message)),
+          );
+        });
   }
 
   @override
@@ -152,12 +164,24 @@ class MoreInformationClassificationWebViewPageState
               child: WebView(
                   initialUrl: this.url,
                   javascriptMode: JavascriptMode.unrestricted,
+                  javascriptChannels: <JavascriptChannel>{
+              _toasterJavascriptChannel(context),
+            },
+            onWebViewCreated: (WebViewController webViewController) {
+              _webViewController = webViewController;
+              _controller.complete(webViewController);
+            },
                   onPageFinished: (String url) {
               print('Page finished loading: $url');
 
               // Removes header and footer from page
               _webViewController
-                  .runJavascriptReturningResult("var head = document.getElementsByTagName('header')[0];head.parentNode.removeChild(head);var footer = document.getElementsByTagName('footer')[0];footer.parentNode.removeChild(footer);")
+                  .runJavascriptReturningResult("javascript:(function() { " +
+                      "var head = document.getElementsByTagName('header')[0];" +
+                      "head.parentNode.removeChild(head);" +
+                      "var footer = document.getElementsByTagName('footer')[0];" +
+                      "footer.parentNode.removeChild(footer);" +
+                      "})()")
                   .then(
                       (value) => debugPrint('Page finished loading Javascript'))
                   .catchError((onError) => debugPrint('$onError'));
