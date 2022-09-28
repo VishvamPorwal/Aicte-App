@@ -157,7 +157,7 @@ class MoreInformationClassificationWebViewPageState
 
               // Removes header and footer from page
               _webViewController
-                  .runJavascriptReturningResult("javascript:(function() { var head = document.getElementsByTagName('header')[0];head.parentNode.removeChild(head);var footer = document.getElementsByTagName('footer')[0];footer.parentNode.removeChild(footer);})()")
+                  .runJavascriptReturningResult("var head = document.getElementsByTagName('header')[0];head.parentNode.removeChild(head);var footer = document.getElementsByTagName('footer')[0];footer.parentNode.removeChild(footer);")
                   .then(
                       (value) => debugPrint('Page finished loading Javascript'))
                   .catchError((onError) => debugPrint('$onError'));
