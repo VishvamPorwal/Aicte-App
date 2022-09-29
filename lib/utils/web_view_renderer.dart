@@ -43,15 +43,14 @@ class WebViewRendererUtilState
           );
         });
   }
+  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text(this.title),
-          automaticallyImplyLeading: false,
         ),
-        drawer: MyDrawer(),
         body: Column(children: [
           Expanded(
               child: WebView(
@@ -61,19 +60,25 @@ class WebViewRendererUtilState
               _toasterJavascriptChannel(context),
             },
             onWebViewCreated: (WebViewController webViewController) {
-              _webViewController = webViewController;
-              _controller.complete(webViewController);
+              setState((){
+                _webViewController = webViewController;
+                _controller.complete(webViewController);
+              });
+              
             },
-            onPageFinished: (String url) {
-              print('Page finished loading: $url');
+            onPageFinished: (String url) async{
+              ('Page finished loading: $url');
 
               // Removes header and footer from page
-              _webViewController
-                  .runJavascriptReturningResult("javascript:(function() { " +
+              await _webViewController.runJavascriptReturningResult("javascript:(function() { " +
                       "var head = document.querySelector('body > div.w3-top');" +
                       "head.parentNode.removeChild(head);" +
                       "var footer = document.getElementsByTagName('footer')[0];" +
                       "footer.parentNode.removeChild(footer);" +
+                      "var foot = document.querySelector('#footer>div');" +
+                      "foot.parentNode.removeChild(foot);" +
+                      "var menu = document.querySelector('#mobile_toggle>a');" +
+                      "menu.parentNode.removeChild(menu);" +
                       "})()")
                   .then(
                       (value) => debugPrint('Page finished loading Javascript'))

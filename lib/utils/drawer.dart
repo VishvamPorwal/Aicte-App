@@ -21,7 +21,7 @@ class MyDrawer extends StatelessWidget {
           DrawerHeader(
             child: Text('AICTE'),
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: Colors.yellow,
             ),
           ),
           ListTile(
@@ -33,7 +33,7 @@ class MyDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.home),
+            leading: Icon(Icons.auto_graph_outlined),
             title: Text('Statistics'),
             onTap: () {
               Navigator.push(context,
@@ -41,7 +41,7 @@ class MyDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.home),
+            leading: Icon(Icons.school),
             title: Text('Institutions'),
             onTap: () {
               Navigator.push(
@@ -49,7 +49,7 @@ class MyDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.home),
+            leading: Icon(Icons.note_alt_rounded),
             title: Text('Bulletins'),
             onTap: () {
               Navigator.push(context,
@@ -57,7 +57,7 @@ class MyDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.home),
+            leading: Icon(Icons.perm_media),
             title: Text('Gallery'),
             onTap: () {
               Navigator.push(context,
@@ -65,7 +65,7 @@ class MyDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.home),
+            leading: Icon(Icons.history_edu_rounded),
             title: Text('About Us'),
             onTap: () {
               Navigator.push(

@@ -1,6 +1,8 @@
 import 'package:aicte_app/pages/bulletins.dart';
 import 'package:aicte_app/pages/gallery.dart';
+import 'package:aicte_app/pages/institutes.dart';
 import 'package:aicte_app/pages/statistics.dart';
+import 'package:aicte_app/utils/drawer.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,62 +16,61 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MyDrawer(),
       appBar: AppBar(
         title: const Text('AICTE'),
       ),
       body: Column(
         children: [
-          Flexible(child: Container(
+          Container(
             height: MediaQuery.of(context).size.height/4,
             width: MediaQuery.of(context).size.width/4,
             child: Icon(Icons.home),
-          )),
+          ),
           Flexible(child: GridView(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 10), children: [
-            InkWell(
-              child: Card(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Flexible(child: Container(
-                      child: Icon(Icons.home),
-                    )),
-                    Text("Statistics"),
-                  ],
+            GestureDetector(
+                child: Container(
+                  decoration: BoxDecoration(border: Border.all(color: Colors.tealAccent, width: 5.0), borderRadius : BorderRadius.circular(18)),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16.0),
+                    child: Image.asset(
+                      'assets/statistics.jpeg',
+                      fit: BoxFit.cover,
+                      
+                    ),
+                  ),
                 ),
-              ),
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) => StatisticsPage()));
               }, 
             ),
-            InkWell(
-                child: Card(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(
-                          child: Container(
-                        child: Icon(Icons.home),
-                      )),
-                      Text("Institutions"),
-                    ],
+            GestureDetector(
+                child: Container(
+                  decoration: BoxDecoration(border: Border.all(color: Colors.tealAccent, width: 3.0), borderRadius : BorderRadius.circular(18)),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16.0),
+                    child: Image.asset(
+                      'assets/institutions.jpeg',
+                      fit: BoxFit.cover,
+                      
+                    ),
                   ),
                 ),
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => StatisticsPage()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => InstitutesPage()));
                 
                 },
               ),
-            InkWell(
-                child: Card(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(
-                          child: Container(
-                        child: Icon(Icons.home),
-                      )),
-                      Text("Bulletins"),
-                    ],
+            GestureDetector(
+                child: Container(
+                  decoration: BoxDecoration(border: Border.all(color: Colors.tealAccent, width: 3.0), borderRadius : BorderRadius.circular(18)),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16.0),
+                    child: Image.asset(
+                      'assets/bulletins.jpeg',
+                      fit: BoxFit.cover,
+                      
+                    ),
                   ),
                 ),
                 onTap: () {
@@ -78,17 +79,16 @@ class _HomePageState extends State<HomePage> {
                 
                 }, 
               ),
-            InkWell(
-                child: Card(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(
-                          child: Container(
-                        child: Icon(Icons.home),
-                      )),
-                      Text("Gallery"),
-                    ],
+            GestureDetector(
+                child: Container(
+                  decoration: BoxDecoration(border: Border.all(color: Colors.tealAccent, width: 3.0), borderRadius : BorderRadius.circular(18)),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16.0),
+                    child: Image.asset(
+                      'assets/gallery.png',
+                      fit: BoxFit.cover,
+                      
+                    ),
                   ),
                 ),
                 onTap: () {
@@ -97,16 +97,17 @@ class _HomePageState extends State<HomePage> {
                 
                 }, // TODO: Add Statistics Page
               ),
-          ],))
+          ],)),
+          
         ],
       ),
-    floatingActionButton: FloatingActionButton(
-      onPressed: () {
+    // floatingActionButton: FloatingActionButton(
+    //   onPressed: () {
         
-      },
-      child: const Icon(Icons.chat),
-      backgroundColor: Colors.blue,
-    ),
+    //   },
+    //   child: const Icon(Icons.chat),
+    //   backgroundColor: Colors.blue,
+    // ),
     
     );
   }
