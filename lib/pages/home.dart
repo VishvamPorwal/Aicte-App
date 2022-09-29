@@ -17,98 +17,173 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: MyDrawer(),
+
       appBar: AppBar(
-        title: const Text('AICTE'),
+        centerTitle: true,
+        title: const Text('AICTE Mobile App'),
       ),
       body: Column(
         children: [
-          Container(
-            height: MediaQuery.of(context).size.height/4,
-            width: MediaQuery.of(context).size.width/4,
-            child: Icon(Icons.home),
-          ),
-          Flexible(child: GridView(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 10), children: [
-            GestureDetector(
-                child: Container(
-                  decoration: BoxDecoration(border: Border.all(color: Colors.tealAccent, width: 5.0), borderRadius : BorderRadius.circular(18)),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(16.0),
-                    child: Image.asset(
-                      'assets/statistics.jpeg',
-                      fit: BoxFit.cover,
-                      
-                    ),
-                  ),
-                ),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => StatisticsPage()));
-              }, 
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Container(
+              height: MediaQuery.of(context).size.height / 4,
+              width: MediaQuery.of(context).size.width,
+              child: Image.asset("assets/about_us.png", fit: BoxFit.fitHeight),
             ),
-            GestureDetector(
+          ),
+          Flexible(
+              child: GridView(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 10),
+            children: [
+              GestureDetector(
                 child: Container(
-                  decoration: BoxDecoration(border: Border.all(color: Colors.tealAccent, width: 3.0), borderRadius : BorderRadius.circular(18)),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.tealAccent, width: 5.0),
+                      borderRadius: BorderRadius.circular(18)),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16.0),
-                    child: Image.asset(
-                      'assets/institutions.jpeg',
-                      fit: BoxFit.cover,
-                      
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/statistics.jpeg',
+                          fit: BoxFit.cover,
+                          height: 100,
+                          width: 100,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Statistics",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )
+                      ],
                     ),
                   ),
                 ),
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => InstitutesPage()));
-                
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => StatisticsPage()));
                 },
               ),
-            GestureDetector(
+              GestureDetector(
                 child: Container(
-                  decoration: BoxDecoration(border: Border.all(color: Colors.tealAccent, width: 3.0), borderRadius : BorderRadius.circular(18)),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.tealAccent, width: 3.0),
+                      borderRadius: BorderRadius.circular(18)),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16.0),
-                    child: Image.asset(
-                      'assets/bulletins.jpeg',
-                      fit: BoxFit.cover,
-                      
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/institutions.jpeg',
+                          fit: BoxFit.cover,
+                          height: 100,
+                          width: 100,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Institutions",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )
+                      ],
                     ),
                   ),
                 ),
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => BulletinsPage()));
-                
-                
-                }, 
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => InstitutesPage()));
+                },
               ),
-            GestureDetector(
+              GestureDetector(
                 child: Container(
-                  decoration: BoxDecoration(border: Border.all(color: Colors.tealAccent, width: 3.0), borderRadius : BorderRadius.circular(18)),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.tealAccent, width: 3.0),
+                      borderRadius: BorderRadius.circular(18)),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16.0),
-                    child: Image.asset(
-                      'assets/gallery.png',
-                      fit: BoxFit.cover,
-                      
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/bulletins.jpeg',
+                          fit: BoxFit.cover,
+                          height: 100,
+                          width: 100,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Bulletins",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )
+                      ],
                     ),
                   ),
                 ),
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => GalleryPage()));
-                
-                
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => BulletinsPage()));
+                },
+              ),
+              GestureDetector(
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.tealAccent, width: 3.0),
+                      borderRadius: BorderRadius.circular(18)),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/gallery.jpeg',
+                          fit: BoxFit.cover,
+                          height: 100,
+                          width: 100,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Gallery",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => GalleryPage()));
                 }, // TODO: Add Statistics Page
               ),
-          ],)),
-          
+            ],
+          )),
         ],
       ),
-    // floatingActionButton: FloatingActionButton(
-    //   onPressed: () {
-        
-    //   },
-    //   child: const Icon(Icons.chat),
-    //   backgroundColor: Colors.blue,
-    // ),
-    
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+
+      //   },
+      //   child: const Icon(Icons.chat),
+      //   backgroundColor: Colors.blue,
+      // ),
     );
   }
 }

@@ -19,10 +19,12 @@ class MyDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
-            child: Text('AICTE'),
+            child: Text(''),
             decoration: BoxDecoration(
-              color: Colors.yellow,
-            ),
+                color: Colors.yellow,
+                image: DecorationImage(
+                    image: AssetImage('assets/aicte_logo.png'),
+                    fit: BoxFit.cover)),
           ),
           ListTile(
             leading: Icon(Icons.home),
@@ -44,8 +46,8 @@ class MyDrawer extends StatelessWidget {
             leading: Icon(Icons.school),
             title: Text('Institutions'),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => InstitutesPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => InstitutesPage()));
             },
           ),
           ListTile(
