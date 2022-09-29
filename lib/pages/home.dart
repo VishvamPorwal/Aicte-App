@@ -33,10 +33,15 @@ class _HomePageState extends State<HomePage> {
                   decoration: BoxDecoration(border: Border.all(color: Colors.tealAccent, width: 5.0), borderRadius : BorderRadius.circular(18)),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16.0),
-                    child: Image.asset(
-                      'assets/statistics.jpeg',
-                      fit: BoxFit.cover,
-                      
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          'assets/statistics.jpeg',
+                          fit: BoxFit.cover,
+                          
+                        ),
+                        Text("Statistics")
+                      ],
                     ),
                   ),
                 ),
@@ -49,10 +54,15 @@ class _HomePageState extends State<HomePage> {
                   decoration: BoxDecoration(border: Border.all(color: Colors.tealAccent, width: 3.0), borderRadius : BorderRadius.circular(18)),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16.0),
-                    child: Image.asset(
-                      'assets/institutions.jpeg',
-                      fit: BoxFit.cover,
-                      
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          'assets/institutions.jpeg',
+                          fit: BoxFit.cover,
+                          
+                        ),
+                        Text("Institutes")
+                      ],
                     ),
                   ),
                 ),
@@ -66,16 +76,20 @@ class _HomePageState extends State<HomePage> {
                   decoration: BoxDecoration(border: Border.all(color: Colors.tealAccent, width: 3.0), borderRadius : BorderRadius.circular(18)),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16.0),
-                    child: Image.asset(
-                      'assets/bulletins.jpeg',
-                      fit: BoxFit.cover,
-                      
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          'assets/bulletins.jpeg',
+                          fit: BoxFit.cover,
+                          
+                        ),
+                        Text("Bulletin")
+                      ],
                     ),
                   ),
                 ),
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => BulletinsPage()));
-                
                 
                 }, 
               ),
@@ -84,10 +98,15 @@ class _HomePageState extends State<HomePage> {
                   decoration: BoxDecoration(border: Border.all(color: Colors.tealAccent, width: 3.0), borderRadius : BorderRadius.circular(18)),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16.0),
-                    child: Image.asset(
-                      'assets/gallery.png',
-                      fit: BoxFit.cover,
-                      
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          'assets/gallery.png',
+                          fit: BoxFit.cover,
+                          
+                        ),
+                        Text("Gallery")
+                      ],
                     ),
                   ),
                 ),
