@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^2.1.0 
   webview_flutter:
+  flutter_image_slideshow: any
 
 dev_dependencies:
   flutter_test:
@@ -67,7 +68,14 @@ flutter:
     - assets/institutions.jpeg
     - assets/bulletins.jpeg
     - assets/aicte_logo.png
-    - assets/about_us.png
+    - assets/slider1.jpg
+    - assets/slider2.jpg
+    - assets/slider3.jpg
+    - assets/slider4.png
+    - assets/slider5.jpeg
+    - assets/slider6.jpg
+    - assets/bg.jpg
+    - assets/bgl.jpg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

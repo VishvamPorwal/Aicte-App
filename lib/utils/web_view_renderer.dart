@@ -49,7 +49,7 @@ class WebViewRendererUtilState
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(this.title),
+          title: Text(this.title, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
         ),
         body: Column(children: [
           Expanded(
@@ -66,24 +66,44 @@ class WebViewRendererUtilState
               });
               
             },
-            onPageFinished: (String url) async{
-              ('Page finished loading: $url');
-
-              // Removes header and footer from page
-              await _webViewController.runJavascriptReturningResult("javascript:(function() { " +
-                      "var head = document.querySelector('body > div.w3-top');" +
-                      "head.parentNode.removeChild(head);" +
-                      "var footer = document.getElementsByTagName('footer')[0];" +
-                      "footer.parentNode.removeChild(footer);" +
-                      "var foot = document.querySelector('#footer>div');" +
-                      "foot.parentNode.removeChild(foot);" +
-                      "var menu = document.querySelector('#mobile_toggle>a');" +
-                      "menu.parentNode.removeChild(menu);" +
-                      "})()")
-                  .then(
-                      (value) => debugPrint('Page finished loading Javascript'))
-                  .catchError((onError) => debugPrint('$onError'));
-            },
+            
+            onPageFinished: (url){
+          _webViewController.runJavascript(
+            "document.getElementsByClassName('container-fluid topPan')[0].style.display='none'"
+          );
+          _webViewController.runJavascript(
+            "document.getElementsByClassName('w3-bar w3-text-white w3-padding w3-small')[0].style.display='none'"
+          );
+          _webViewController.runJavascript(
+            "document.getElementsByClassName('off-canvas-toggle navbar-canvas-toggle icon-toggle hidden-lg clearfix')[0].style.display='none'"
+          );
+          
+          _webViewController.runJavascript(
+            "document.getElementsByClassName('socials-list-footer')[0].style.display='none'"
+          );
+           _webViewController.runJavascript(
+            "document.getElementsByClassName('pull-left')[0].style.display='none'"
+          );
+          _webViewController.runJavascript(
+            "document.getElementsByClassName('logo')[0].style.display='none'"
+          );
+          _webViewController.runJavascript(
+            "document.getElementsByClassName('region region-footer')[0].style.display='none'"
+          );
+          _webViewController.runJavascript(
+            "document.getElementsByClassName('breadcrumb')[0].style.display='none'"
+          );
+         _webViewController.runJavascript(
+            "document.getElementsByClassName('col-md-4 col-sm-4 col-xs-12 Search')[0].style.display='none'"
+          );
+          _webViewController.runJavascript(
+            "document.getElementsByClassName('oda-chat-wrapper oda-chat-collapsed')[0].style.display='none'"
+          );
+          _webViewController.runJavascript(
+            "document.getElementsByClassName('w3-bar w3-light-gray w3-border-top w3-padding')[0].style.display='none'"
+          );
+          
+        },
           ))
         ]));
   }
