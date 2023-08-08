@@ -1,4 +1,4 @@
-# aicte_app
+# Aicte App
 
 A new Flutter project for AICTE APP.
 
