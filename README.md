@@ -1,16 +1,17 @@
-# Aicte App
+AICTE App
+A new Flutter project for the AICTE (All India Council for Technical Education) app , All India Council for Technical Education (AICTE) was set up in November 1945 as a national-level Apex Advisory Body to conduct a survey on the facilities available for technical education and to promote development in the country in a coordinated and integrated manner.
 
-A new Flutter project for AICTE APP.
+Getting Started
+This project serves as a starting point for a Flutter application.
 
-## Getting Started
+Here are a few resources to help you get started if this is your first Flutter project:
 
-This project is a starting point for a Flutter application.
+Lab: Write your first Flutter app
+Cookbook: Useful Flutter samples
+For assistance with Flutter development, check out the online documentation, which offers tutorials, samples, guidance on mobile development, and a comprehensive API reference.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+
